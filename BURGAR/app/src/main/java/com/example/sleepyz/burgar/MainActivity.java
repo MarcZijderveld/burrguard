@@ -49,11 +49,6 @@ public class MainActivity extends ActionBarActivity {
                     Toast.LENGTH_SHORT).show();
             finish();
         }
-        else if (BluetoothAdapter.getDefaultAdapter() == null){
-            Toast.makeText(this, "Bluetooth not Supported",
-                    Toast.LENGTH_SHORT).show();
-            finish();
-        }
         final BluetoothManager bluetoothManager =
                 (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
         mBluetoothAdapter = bluetoothManager.getAdapter();
