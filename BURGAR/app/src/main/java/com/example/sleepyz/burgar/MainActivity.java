@@ -23,6 +23,7 @@ package com.example.sleepyz.burgar;
         import android.os.Handler;
         import android.support.v7.app.ActionBarActivity;
         import android.util.Log;
+        import android.view.View;
         import android.widget.Toast;
 
         import java.util.ArrayList;
@@ -94,6 +95,11 @@ public class MainActivity extends ActionBarActivity {
         mGatt.close();
         mGatt = null;
         super.onDestroy();
+    }
+
+    public void openHome(View v) {
+        Intent i = new Intent(this, HomeActivity.class);
+        startActivity(i);
     }
 
     @Override

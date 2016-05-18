@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">BURGAR</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="alarm_on_off">Alarm on/off</string>
+    <string name="plussign">+</string>
 </resources>
