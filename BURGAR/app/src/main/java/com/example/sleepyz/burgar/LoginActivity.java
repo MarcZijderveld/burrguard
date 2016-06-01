@@ -145,6 +145,7 @@ public class LoginActivity extends AppCompatActivity {
                                 BluetoothActivity.class);
                         startActivity(intent);
                         finish();
+
                     } else {
                         // Error in login. Get the error message
                         String errorMsg = jObj.getString("error_msg");
