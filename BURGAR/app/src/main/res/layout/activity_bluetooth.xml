@@ -9,4 +9,27 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.sleepyz.burgar.BluetoothActivity">
 
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listViewDevices"
+        android:layout_below="@+id/buttonScan"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/scan_bluetooth_devices"
+        android:id="@+id/buttonScan"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/listViewDevices"
+        android:visibility="invisible" />
+
 </RelativeLayout>
