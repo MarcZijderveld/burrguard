@@ -2,6 +2,10 @@ package com.example.sleepyz.burgar;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 public class HomeActivity extends Activity {
 
@@ -10,4 +14,23 @@ public class HomeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
     }
+
+        public void onButtonAlarmClick(View v) {
+            ToggleButton mToggle = (ToggleButton)findViewById(R.id.toggleButton);
+
+            if (mToggle.isChecked()) {
+                // The toggle is enabled
+                Toast t = Toast.makeText(this, "You have turned the alarm on", Toast.LENGTH_SHORT);
+                t.show();
+            } else {
+                // The toggle is disabled
+                Toast t = Toast.makeText(this, "You have turned the alarm off", Toast.LENGTH_SHORT);
+                t.show();
+            }
+        }
+
+
+
+
+
 }
