@@ -7,13 +7,12 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.sleepyz.burgar.WhitelistActivity"
-    android:background="#e3cfcf">
+    tools:context="com.example.sleepyz.burgar.WhitelistActivity">
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
+        android:id="@+id/WhitelistListView"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
 
@@ -22,8 +21,7 @@
         android:layout_height="wrap_content"
         android:text="@string/plussign"
         android:id="@+id/button2"
-        android:layout_alignBottom="@+id/listView"
-        android:layout_alignEnd="@+id/listView"
-        android:background="#ffffff" />
+        android:layout_alignBottom="@+id/WhitelistListView"
+        android:layout_alignEnd="@+id/WhitelistListView" />
 
 </RelativeLayout>

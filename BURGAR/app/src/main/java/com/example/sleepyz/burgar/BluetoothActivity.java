@@ -325,7 +325,7 @@ public class BluetoothActivity extends AppCompatActivity {
                 _address = device.getAddress();
 
                 // start the control activity to switch the device
-                Intent intent = new Intent(BluetoothActivity.this, HomeActivity.class);
+                Intent intent = new Intent(BluetoothActivity.this, WhitelistActivity.class);
                 intent.putExtra("address", _address);
                 startActivity(intent);
                 Log.d("ble","connected met bluetooth apparaat" + _address);
