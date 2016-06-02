@@ -123,6 +123,7 @@ public class BluetoothActivity extends AppCompatActivity {
                 intent.putExtra("address", _address);
                 startActivity(intent);
                 Log.d("ble","connected met bluetooth apparaat" + _address);
+                finish();
             }
         });
     }
