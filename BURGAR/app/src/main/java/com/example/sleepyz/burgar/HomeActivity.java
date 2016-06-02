@@ -49,6 +49,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         final ProgressDialog dlg = ProgressDialog.show(this, "Connecting", "Please wait...", true);
+        final Toast t = Toast.makeText(this, "Failed to connect, please try again.", Toast.LENGTH_SHORT);
 
         _ble.connectAndDiscover(_address, new IDiscoveryCallback() {
             @Override
@@ -102,6 +103,7 @@ public class HomeActivity extends AppCompatActivity {
                         public void onError(int error) {
                             // an error occurred while trying to read the PWM state
                             Log.e("getpwm", "Failed to get Pwm: " + error);
+                            Log.e("getpwm", "Failed to get Pwm: " + error);
 
                             // disconnect and close the device again
                             _ble.disconnectAndClose(false, new IStatusCallback() {
@@ -135,7 +137,12 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onError(int error) {
                 // an error occurred during connect/discover
+                dlg.dismiss();
+                t.show();
+                Intent intent = new Intent(HomeActivity.this, BluetoothActivity.class);
+                startActivity(intent);
                 Log.e("conndisc", "failed to connect/discover: " + error);
+                finish();
             }
         });
 
@@ -230,10 +237,18 @@ public class HomeActivity extends AppCompatActivity {
        }
     }
 
+    public void onButtonDisconnect()
+    {
+        _ble.destroy();
+        Intent intent = new Intent(HomeActivity.this, BluetoothActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflator = getMenuInflater();
-        inflator.inflate(R.menu.activity_menu, menu);
+        inflator.inflate(R.menu.activity_menu_disconnect, menu);
         return true;
     }
 
@@ -243,6 +258,9 @@ public class HomeActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.logout:
                 onButtonLogOff();
+                return true;
+            case R.id.disconnect:
+                onButtonDisconnect();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
