@@ -28,7 +28,7 @@ import com.example.sleepyz.burgar.app.AppController;
 import com.example.sleepyz.burgar.helper.SQLiteHandler;
 import com.example.sleepyz.burgar.helper.SessionManager;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends Activity {
     private static final String TAG = RegisterActivity.class.getSimpleName();
     private Button btnRegister;
     private Button btnLinkToLogin;

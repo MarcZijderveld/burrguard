@@ -29,7 +29,7 @@ import com.example.sleepyz.burgar.app.AppController;
 import com.example.sleepyz.burgar.helper.SQLiteHandler;
 import com.example.sleepyz.burgar.helper.SessionManager;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends Activity {
     private static final String TAG = RegisterActivity.class.getSimpleName();
     private Button btnLogin;
     private Button btnLinkToRegister;

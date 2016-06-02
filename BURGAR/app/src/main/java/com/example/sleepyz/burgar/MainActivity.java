@@ -1,6 +1,7 @@
 package com.example.sleepyz.burgar;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +9,7 @@ import android.os.Bundle;
 
 
 @TargetApi(21)
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     private static int SPLASH_TIME_OUT = 3000;
 

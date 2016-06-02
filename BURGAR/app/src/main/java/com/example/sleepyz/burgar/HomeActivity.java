@@ -3,17 +3,26 @@ package com.example.sleepyz.burgar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-public class HomeActivity extends Activity {
+import com.example.sleepyz.burgar.helper.SessionManager;
+
+public class HomeActivity extends AppCompatActivity {
+
+    private SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        session = new SessionManager(getApplicationContext());
     }
 
     public void onButtonAlarmClick(View v) {
@@ -37,6 +46,37 @@ public class HomeActivity extends Activity {
         finish();
     }
 
+    //------------------------------Options Menu Stuff ------------------------------
+    public void onButtonLogOff()
+    {
+       if(session.isLoggedIn())
+       {
+           session.setLogin(false);
+           Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+           startActivity(intent);
+           finish();
+       }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflator = getMenuInflater();
+        inflator.inflate(R.menu.activity_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.logout:
+                onButtonLogOff();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+    //----------------------------------------------------------------------------------
 
 
 
