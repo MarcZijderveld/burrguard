@@ -17,6 +17,7 @@ import android.widget.ProgressBar;
 import com.example.sleepyz.burgar.helper.SessionManager;
 
 import nl.dobots.bluenet.ble.base.callbacks.IStatusCallback;
+import nl.dobots.bluenet.ble.extended.BleDeviceFilter;
 import nl.dobots.bluenet.ble.extended.BleExt;
 import nl.dobots.bluenet.ble.extended.callbacks.IBleDeviceCallback;
 import nl.dobots.bluenet.ble.extended.structs.BleDevice;
@@ -88,7 +89,8 @@ public class BluetoothActivity extends AppCompatActivity {
                 // and FridgeBeacons
 //                BleDeviceFilter selectedItem = (BleDeviceFilter) _spFilter.getSelectedItem();
 //                _ble.setScanFilter(selectedItem);
-
+                _ble.setScanFilter(BleDeviceFilter.crownstone);
+                BleDeviceFilter.values();
                 if (!_scanning) {
                     startScan();
                 } else {
