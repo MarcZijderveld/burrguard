@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/BURGAR.iml" filepath="$PROJECT_DIR$/BURGAR.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/bluenet/bluenet.iml" filepath="$PROJECT_DIR$/bluenet/bluenet.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bluenet/bluenet.iml" filepath="$PROJECT_DIR$/bluenet/bluenet.iml" />
     </modules>
   </component>
 </project>

@@ -130,6 +130,8 @@ public class HomeActivity extends AppCompatActivity {
                             Toast.makeText(HomeActivity.this, "No PWM Characteristic found for this device!", Toast.LENGTH_LONG).show();
                         }
                     });
+                    Intent i = new Intent(HomeActivity.this, BluetoothActivity.class);
+                    startActivity(i);
                     finish();
                 }
             }
@@ -150,7 +152,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void onButtonAlarmClick(View v) {
-        ToggleButton mToggle = (ToggleButton)findViewById(R.id.toggleButton);
+        final ToggleButton mToggle = (ToggleButton)findViewById(R.id.toggleButton);
+        final ProgressDialog dlg = ProgressDialog.show(this, "Loading", "Please wait...", true);
 
         if (mToggle.isChecked()) {
             _ble.powerOn(_address, new IStatusCallback() {
@@ -159,16 +162,24 @@ public class HomeActivity extends AppCompatActivity {
                     Log.i("poweron", "power on success");
                     // power was switch on successfully, update the light bulb
                     updateLightBulb(true);
+                    dlg.dismiss();
                 }
 
                 @Override
                 public void onError(int error) {
                     Log.i("poweron", "power on failed: " + error);
+                    dlg.dismiss();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(HomeActivity.this, "Power on failed, please reconnect", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                    Intent i = new Intent(HomeActivity.this, BluetoothActivity.class);
+                    startActivity(i);
+                    finish();
                 }
             });
-            // The toggle is enabled
-            Toast t = Toast.makeText(this, "You have turned the alarm on", Toast.LENGTH_SHORT);
-            t.show();
         } else {
             _ble.powerOff(_address, new IStatusCallback() {
                 @Override
@@ -176,16 +187,24 @@ public class HomeActivity extends AppCompatActivity {
                     Log.i("poweroff", "power off success");
                     // power was switch off successfully, update the light bulb
                     updateLightBulb(false);
+                    dlg.dismiss();
                 }
 
                 @Override
                 public void onError(int error) {
                     Log.i("poweroff", "power off failed: " + error);
+                    dlg.dismiss();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(HomeActivity.this, "Power off failed, please reconnect", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                    Intent i = new Intent(HomeActivity.this, BluetoothActivity.class);
+                    startActivity(i);
+                    finish();
                 }
             });
-            // The toggle is disabled
-            Toast t = Toast.makeText(this, "You have turned the alarm off", Toast.LENGTH_SHORT);
-            t.show();
         }
     }
 
