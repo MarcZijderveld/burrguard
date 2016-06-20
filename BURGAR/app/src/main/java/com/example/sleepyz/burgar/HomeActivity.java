@@ -132,6 +132,7 @@ public class HomeActivity extends AppCompatActivity {
                     });
                     Intent i = new Intent(HomeActivity.this, BluetoothActivity.class);
                     startActivity(i);
+                    dlg.dismiss();
                     finish();
                 }
             }

@@ -13,7 +13,9 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import com.example.sleepyz.burgar.app.AppConfig;
 import com.example.sleepyz.burgar.helper.SessionManager;
 
 import nl.dobots.bluenet.ble.base.callbacks.IStatusCallback;
@@ -121,12 +123,23 @@ public class BluetoothActivity extends AppCompatActivity {
                 BleDevice device = _bleDeviceList.get(position);
                 _address = device.getAddress();
 
-                // start the control activity to switch the device
-                Intent intent = new Intent(BluetoothActivity.this, HomeActivity.class);
-                intent.putExtra("address", _address);
-                startActivity(intent);
-                Log.d("ble","connected met bluetooth apparaat" + _address);
-                finish();
+                AppConfig.preferenceSettings = getSharedPreferences(AppConfig.PREFERENCE_NAME, AppConfig.PREFERENCE_MODE_PRIVATE);
+                final String allowedCrownStone = AppConfig.preferenceSettings.getString("crownstone", "default");
+
+                Log.d("dev1",_address);
+                Log.d("dev2",allowedCrownStone);
+                if (device.getAddress().toString().equals(allowedCrownStone.toString())) {
+                    // start the control activity to switch the device
+                    Intent intent = new Intent(BluetoothActivity.this, HomeActivity.class);
+                    intent.putExtra("address", _address);
+                    startActivity(intent);
+                    Log.d("ble","connected met bluetooth apparaat" + _address);
+                    finish();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "You have not the right permisssions to connect with this device.", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
     }
@@ -152,6 +165,7 @@ public class BluetoothActivity extends AppCompatActivity {
 
     private void startScan() {
         ProgressBar spinner = (ProgressBar)findViewById(R.id.progressBar);
+
         spinner.setVisibility(View.VISIBLE);
         _btnScan.setText(getString(R.string.stop_scan_bluetooth_devices));
         // start scanning for devices. the scan will run at the highest frequency until stopScan
