@@ -16,4 +16,5 @@ public class AppConfig {
     public static SharedPreferences.Editor preferenceEditor;
 
     public static final int PREFERENCE_MODE_PRIVATE = 0;
+    public static String PREFERENCE_NAME = "Crownstone";
 }

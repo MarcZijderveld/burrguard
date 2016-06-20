@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
+import com.example.sleepyz.burgar.app.AppConfig;
 import com.example.sleepyz.burgar.helper.SessionManager;
 
 import nl.dobots.bluenet.ble.base.callbacks.IStatusCallback;
@@ -55,6 +56,7 @@ public class BluetoothActivity extends AppCompatActivity {
             public void onSuccess() {
                 // on success is called whenever bluetooth is enabled
                 Log.i(TAG, "BLE enabled");
+
                 onBleEnabled();
                 startScan();
             }
@@ -67,6 +69,9 @@ public class BluetoothActivity extends AppCompatActivity {
             }
         });
         session = new SessionManager(getApplicationContext());
+
+
+
     }
 
     @Override
@@ -78,6 +83,9 @@ public class BluetoothActivity extends AppCompatActivity {
     }
 
     private void initUI() {
+
+
+
         setContentView(R.layout.activity_bluetooth);
 
         _btnScan = (Button) findViewById(R.id.buttonScan);
@@ -206,6 +214,10 @@ public class BluetoothActivity extends AppCompatActivity {
         if(session.isLoggedIn())
         {
             session.setLogin(false);
+
+            AppConfig.preferenceSettings = getPreferences(AppConfig.PREFERENCE_MODE_PRIVATE);
+            Log.d("Crownstone ID: ", AppConfig.preferenceSettings.getString("crownstone", ""));
+
             Intent intent = new Intent(BluetoothActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
