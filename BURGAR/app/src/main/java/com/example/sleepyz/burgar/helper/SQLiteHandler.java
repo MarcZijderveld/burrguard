@@ -112,20 +112,4 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         Log.d(TAG, "Deleted all user info from sqlite");
     }
 
-    public boolean isRecordExist(String value) {
-        boolean exist = false;
-        SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "select * from " + TABLE_USER;
-        if (value != null) {
-            sql = sql + " where <coloumn_name> = '" + value + "'";
-        }
-        Cursor c = db.rawQuery(sql, null);
-        if (c != null) {
-            if (c.getCount() > 0)
-                exist = true;
-        }
-        c.close();
-        db.close();
-        return exist;
-    }
 }

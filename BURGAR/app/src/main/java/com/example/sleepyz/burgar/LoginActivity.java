@@ -140,16 +140,16 @@ public class LoginActivity extends Activity {
                                 .getString("created_at");
                         String crownstone = user.getString("crownstone_id");
 
-                        AppConfig.preferenceSettings = getSharedPreferences(AppConfig.PREFERENCE_NAME, AppConfig.PREFERENCE_MODE_PRIVATE);
+                        AppConfig.preferenceSettings = getPreferences(AppConfig.PREFERENCE_MODE_PRIVATE);
                         AppConfig.preferenceEditor = AppConfig.preferenceSettings.edit();
                         AppConfig.preferenceEditor.putString("crownstone", crownstone);
                         AppConfig.preferenceEditor.commit();
 
-                        Log.d("Crownstone ID: ", AppConfig.preferenceSettings.getString("crownstone", ""));
+                        Log.d("Crownstone ID: ", crownstone);
 
                         // Inserting row in users table
-//                        if(!db.isRecordExist(user.getString("email")))
-//                            db.addUser(name, email, uid, created_at);
+//                        if(db.)
+//                        db.addUser(name, email, uid, created_at);
 
                         // Launch main activity
                         Intent intent = new Intent(LoginActivity.this,
