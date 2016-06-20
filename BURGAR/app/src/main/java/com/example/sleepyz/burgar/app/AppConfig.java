@@ -14,4 +14,6 @@ public class AppConfig {
 
     public static SharedPreferences preferenceSettings;
     public static SharedPreferences.Editor preferenceEditor;
+
+    public static final int PREFERENCE_MODE_PRIVATE = 0;
 }
