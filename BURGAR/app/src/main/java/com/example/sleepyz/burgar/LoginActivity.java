@@ -138,9 +138,13 @@ public class LoginActivity extends Activity {
                         String email = user.getString("email");
                         String created_at = user
                                 .getString("created_at");
+                        String crownstone = user.getString("crownstone_id");
+
+                        AppConfig.preferenceEditor.putString("crownstone", crownstone);
+                        AppConfig.preferenceEditor.commit();
 
                         // Inserting row in users table
-                        //db.addUser(name, email, uid, created_at);
+                        db.addUser(name, email, uid, created_at);
 
                         // Launch main activity
                         Intent intent = new Intent(LoginActivity.this,
