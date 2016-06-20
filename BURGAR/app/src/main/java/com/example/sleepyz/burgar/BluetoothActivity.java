@@ -56,6 +56,7 @@ public class BluetoothActivity extends AppCompatActivity {
                 // on success is called whenever bluetooth is enabled
                 Log.i(TAG, "BLE enabled");
                 onBleEnabled();
+                startScan();
             }
 
             @Override
