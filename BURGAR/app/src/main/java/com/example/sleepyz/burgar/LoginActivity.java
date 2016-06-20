@@ -140,7 +140,7 @@ public class LoginActivity extends Activity {
                                 .getString("created_at");
                         String crownstone = user.getString("crownstone_id");
 
-                        AppConfig.preferenceSettings = getPreferences(AppConfig.PREFERENCE_MODE_PRIVATE);
+                        AppConfig.preferenceSettings = getSharedPreferences(AppConfig.PREFERENCE_NAME, AppConfig.PREFERENCE_MODE_PRIVATE);
                         AppConfig.preferenceEditor = AppConfig.preferenceSettings.edit();
                         AppConfig.preferenceEditor.putString("crownstone", crownstone);
                         AppConfig.preferenceEditor.commit();
