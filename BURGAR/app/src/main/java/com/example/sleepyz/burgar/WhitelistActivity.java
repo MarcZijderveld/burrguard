@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class FriendlistActivity extends AppCompatActivity {
+public class WhitelistActivity extends AppCompatActivity {
 
     private ArrayList<String> FriendlistArray;
     private ArrayAdapter adapter;
@@ -40,15 +40,6 @@ public class FriendlistActivity extends AppCompatActivity {
         ListView lv = (ListView)findViewById(R.id.WhitelistListView);
         lv.setAdapter(adapter);
 
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> a, View view, int position, long id) {
-
-                Toast.makeText(getApplicationContext(), ((TextView) view).getText(),
-                        Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -63,8 +54,6 @@ public class FriendlistActivity extends AppCompatActivity {
             public void onClick(View v) {
                 FriendlistArray.add(editText.getText().toString());
                 adapter.notifyDataSetChanged();
-
-                Log.d("Hallo", "Ik ben geklikt");
             }
         });
 
