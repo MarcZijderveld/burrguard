@@ -22,4 +22,5 @@
     <string name="turn_on_off">Turn on / off</string>
     <string name="account">Account</string>
     <string name="logout">Logout</string>
+    <string name="home">Home</string>
 </resources>

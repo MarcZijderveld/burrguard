@@ -244,4 +244,10 @@ public class BluetoothActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    public void OnHomeClick(View view)
+    {
+        Intent intent = new Intent(BluetoothActivity.this, HomeActivity.class);
+        startActivity(intent);
+    }
 }
