@@ -24,4 +24,8 @@
     <string name="logout">Logout</string>
     <string name="home">Home</string>
     <string name="toFriendlist">To Friendlist</string>
+    <string name="delete_title">Delete</string>
+    <string name="delete_dialog">Are you sure you want to remove this friend?</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
 </resources>
