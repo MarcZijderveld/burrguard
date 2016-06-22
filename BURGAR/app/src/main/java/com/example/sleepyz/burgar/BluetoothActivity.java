@@ -244,11 +244,4 @@ public class BluetoothActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
-    public void onButtonWhiteListClick(View v)
-    {
-        Intent intent = new Intent(BluetoothActivity.this, WhitelistActivity.class);
-        startActivity(intent);
-        finish();
-    }
 }
