@@ -31,7 +31,6 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".PlaceholderActivity" />
-        <activity android:name=".HistoryActivity" />
         <activity android:name=".EventActivity"></activity>
     </application>
 
