@@ -30,7 +30,6 @@
         <activity android:name=".BluetoothActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".PlaceholderActivity" />
         <activity android:name=".EventActivity"></activity>
     </application>
 
