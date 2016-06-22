@@ -12,6 +12,8 @@ public class AppConfig {
     // Server user register url
     public static String URL_REGISTER = "http://project.cmi.hr.nl/2015_2016/emedia_mt2b_t3/burguard_api/register.php";
 
+    public static String URL_EVENTS = "http://project.cmi.hr.nl/2015_2016/emedia_mt2b_t3/burguard_api/get_alarm.php";
+
     public static SharedPreferences preferenceSettings;
     public static SharedPreferences.Editor preferenceEditor;
 

@@ -31,75 +31,12 @@ import com.example.sleepyz.burgar.helper.SQLiteHandler;
 import com.example.sleepyz.burgar.helper.SessionManager;
 
 public class HistoryActivity extends Activity {
-    private static final String TAG = RegisterActivity.class.getSimpleName();
-    private Button btnLogin;
-    private Button btnLinkToRegister;
-    private EditText inputEmail;
-    private EditText inputPassword;
-    private ProgressDialog pDialog;
-    private SessionManager session;
-    private SQLiteHandler db;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_login);
-
-        inputEmail = (EditText) findViewById(R.id.email);
-        inputPassword = (EditText) findViewById(R.id.password);
-        btnLogin = (Button) findViewById(R.id.btnLogin);
-        btnLinkToRegister = (Button) findViewById(R.id.btnLinkToRegisterScreen);
-
-        // Progress dialog
-        pDialog = new ProgressDialog(this);
-        pDialog.setCancelable(false);
-
-        // SQLite database handler
-        db = new SQLiteHandler(getApplicationContext());
-
-        // Session manager
-        session = new SessionManager(getApplicationContext());
-
-        // Check if user is already logged in or not
-        if (session.isLoggedIn()) {
-            // User is already logged in. Take him to main activity
-            Intent intent = new Intent(HistoryActivity.this, BluetoothActivity.class);
-            startActivity(intent);
-            finish();
-        }
-
-        // Login button Click Event
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View view) {
-                String email = inputEmail.getText().toString().trim();
-                String password = inputPassword.getText().toString().trim();
-
-                // Check for empty data in the form
-                if (!email.isEmpty() && !password.isEmpty()) {
-                    // login user
-                    checkLogin(email, password);
-                } else {
-                    // Prompt user to enter credentials
-                    Toast.makeText(getApplicationContext(),
-                            "Please enter the credentials!", Toast.LENGTH_LONG)
-                            .show();
-                }
-            }
-
-        });
-
-        // Link to Register Screen
-        btnLinkToRegister.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),
-                        RegisterActivity.class);
-                startActivity(i);
-                finish();
-            }
-        });
+        setContentView(R.layout.activity_history);
 
     }
 
@@ -108,18 +45,15 @@ public class HistoryActivity extends Activity {
      * */
     private void checkLogin(final String email, final String password) {
         // Tag used to cancel the request
-        String tag_string_req = "req_login";
+        String tag_string_req = "req_events";
 
-        pDialog.setMessage("Logging in ...");
-        showDialog();
 
         StringRequest strReq = new StringRequest(Request.Method.POST,
-                AppConfig.URL_LOGIN, new Response.Listener<String>() {
+                AppConfig.URL_EVENTS, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
-                Log.d(TAG, "Login Response: " + response.toString());
-                hideDialog();
+                Log.d("", "Login Response: " + response.toString());
 
                 try {
                     JSONObject jObj = new JSONObject(response);
@@ -127,42 +61,43 @@ public class HistoryActivity extends Activity {
 
                     // Check for error node in json
                     if (!error) {
-                        // user successfully logged in
-                        // Create login session
-                        session.setLogin(true);
-
-                        // Now store the user in SQLite
-                        String uid = jObj.getString("uid");
-
-                        JSONObject user = jObj.getJSONObject("user");
-                        String name = user.getString("name");
-                        String email = user.getString("email");
-                        String created_at = user
-                                .getString("created_at");
-                        String crownstone = user.getString("crownstone_id");
-
-                        AppConfig.preferenceSettings = getSharedPreferences(AppConfig.PREFERENCE_NAME, AppConfig.PREFERENCE_MODE_PRIVATE);
-                        AppConfig.preferenceEditor = AppConfig.preferenceSettings.edit();
-                        AppConfig.preferenceEditor.putString("crownstone", crownstone);
-                        AppConfig.preferenceEditor.commit();
-
-                        Log.d("Crownstone ID: ", crownstone);
-
-                        // Inserting row in users table
-//                        if(db.)
-//                        db.addUser(name, email, uid, created_at);
-
-                        // Launch main activity
-                        Intent intent = new Intent(HistoryActivity.this,
-                                BluetoothActivity.class);
-                        startActivity(intent);
-                        finish();
-
-                    } else {
-                        // Error in login. Get the error message
-                        String errorMsg = jObj.getString("error_msg");
-                        Toast.makeText(getApplicationContext(),
-                                errorMsg, Toast.LENGTH_LONG).show();
+//                        // user successfully logged in
+//                        // Create login session
+//                        session.setLogin(true);
+//
+//                        // Now store the user in SQLite
+//                        String uid = jObj.getString("uid");
+//
+//                        JSONObject user = jObj.getJSONObject("user");
+//                        String name = user.getString("name");
+//                        String email = user.getString("email");
+//                        String created_at = user
+//                                .getString("created_at");
+//                        String crownstone = user.getString("crownstone_id");
+//
+//                        AppConfig.preferenceSettings = getSharedPreferences(AppConfig.PREFERENCE_NAME, AppConfig.PREFERENCE_MODE_PRIVATE);
+//                        AppConfig.preferenceEditor = AppConfig.preferenceSettings.edit();
+//                        AppConfig.preferenceEditor.putString("crownstone", crownstone);
+//                        AppConfig.preferenceEditor.commit();
+//
+//                        Log.d("Crownstone ID: ", crownstone);
+//
+//                        // Inserting row in users table
+////                        if(db.)
+////                        db.addUser(name, email, uid, created_at);
+//
+//                        // Launch main activity
+//                        Intent intent = new Intent(HistoryActivity.this,
+//                                BluetoothActivity.class);
+//                        startActivity(intent);
+//                        finish();
+//
+//                    } else {
+//                        // Error in login. Get the error message
+//                        String errorMsg = jObj.getString("error_msg");
+//                        Toast.makeText(getApplicationContext(),
+//                                errorMsg, Toast.LENGTH_LONG).show();
+//                    }
                     }
                 } catch (JSONException e) {
                     // JSON error
@@ -175,10 +110,9 @@ public class HistoryActivity extends Activity {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Login Error: " + error.getMessage());
+                Log.e("", "Login Error: " + error.getMessage());
                 Toast.makeText(getApplicationContext(),
                         error.getMessage(), Toast.LENGTH_LONG).show();
-                hideDialog();
             }
         }) {
 
@@ -196,15 +130,5 @@ public class HistoryActivity extends Activity {
 
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
-    }
-
-    private void showDialog() {
-        if (!pDialog.isShowing())
-            pDialog.show();
-    }
-
-    private void hideDialog() {
-        if (pDialog.isShowing())
-            pDialog.dismiss();
     }
 }

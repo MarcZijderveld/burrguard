@@ -28,4 +28,7 @@
     <string name="delete_dialog">Are you sure you want to remove this friend?</string>
     <string name="cancel">Cancel</string>
     <string name="delete">Delete</string>
+    <string name="history">HIstory</string>
+    <string name="view">View</string>
+    <string name="view_history">View history</string>
 </resources>

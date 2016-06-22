@@ -296,5 +296,10 @@ public class HomeActivity extends AppCompatActivity {
         _ble.destroy();
     }
 
-
+    public void OnHistoryClick(View view)
+    {
+        Intent intent = new Intent(HomeActivity.this, EventActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }
