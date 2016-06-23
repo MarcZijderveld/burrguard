@@ -242,7 +242,6 @@ public class HomeActivity extends AppCompatActivity {
     {
         Intent intent = new Intent(HomeActivity.this, WhitelistActivity.class);
         startActivity(intent);
-        finish();
     }
 
     //------------------------------Options Menu Stuff ------------------------------
@@ -300,6 +299,5 @@ public class HomeActivity extends AppCompatActivity {
     {
         Intent intent = new Intent(HomeActivity.this, EventActivity.class);
         startActivity(intent);
-        finish();
     }
 }
