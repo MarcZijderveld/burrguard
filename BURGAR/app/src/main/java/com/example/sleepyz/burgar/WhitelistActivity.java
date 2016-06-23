@@ -86,9 +86,6 @@ public class WhitelistActivity extends AppCompatActivity {
     }
 
     public void getUsers() {
-
-        Log.d("Ik begin uberhaupt", "Ja, zo spel je dat");
-
         String tag_string_req = "req_getUsers";
 
         StringRequest strReq = new StringRequest(Request.Method.POST,
@@ -97,8 +94,6 @@ public class WhitelistActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response)
             {
-                Log.d("blablabla", "blablabla");
-
                 Log.d("", "Event Response: " + response.toString());
 
                 try {

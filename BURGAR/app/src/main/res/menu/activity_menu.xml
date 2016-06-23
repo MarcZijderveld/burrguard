@@ -3,4 +3,10 @@
 <item
     android:id="@+id/logout"
     android:title="Logout"/>
+<item
+    android:id="@+id/events"
+    android:title="Events"/>
+<item
+    android:id="@+id/friends"
+    android:title="Trusted List"/>
 </menu>

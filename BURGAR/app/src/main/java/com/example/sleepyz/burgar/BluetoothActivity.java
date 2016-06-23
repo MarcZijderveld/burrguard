@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebHistoryItem;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
@@ -227,7 +228,8 @@ public class BluetoothActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         MenuInflater inflator = getMenuInflater();
         inflator.inflate(R.menu.activity_menu, menu);
         return true;
@@ -239,6 +241,14 @@ public class BluetoothActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.logout:
                 onButtonLogOff();
+                return true;
+            case R.id.events:
+                Intent intent1 = new Intent(BluetoothActivity.this, EventActivity.class);
+                startActivity(intent1);
+                return true;
+            case R.id.friends:
+                Intent intent2 = new Intent(BluetoothActivity.this, WhitelistActivity.class);
+                startActivity(intent2);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
